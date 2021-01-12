@@ -1,0 +1,20 @@
+#logout {
+  font-size: 20px;
+  float: right;
+}
+
+.header {
+  color: white;
+  font-family: "Yeon Sung";
+  font-size: 45px;
+  letter-spacing: 10px;
+  margin-top: 80px;
+}
+
+.input_div_room_page {
+  width: 80%;
+}
+
+.color_white {
+  color: white;
+}
