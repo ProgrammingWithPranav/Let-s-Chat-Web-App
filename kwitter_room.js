@@ -13,3 +13,33 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+function addRoom() {
+  var roomName = document.getElementById("roomName").value;
+  firebase.database().ref("/").child(roomName).update({
+    purpose: "Adding room name",
+  });
+  localStorage.setItem("roomName", roomName);
+}
+
+function getData() {
+  firebase
+    .database()
+    .ref("/")
+    .on("value", function (snapshot) {
+      document.getElementById("output").innerHTML = "";
+      snapshot.forEach(function (childSnapshot) {
+        childKey = childSnapshot.key;
+        Room_names = childKey;
+        //Start code
+        var row = "<div class='room_name' onClick='redirectRoomName(this.id)'></div>";
+        document.getElementById("output").innerHTML += row;
+        //End code
+      });
+    });
+}
+getData();
+
+function redirectRoomName(roomName){
+  localStorage.setItem("roomName", roomName);
+}
